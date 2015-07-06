@@ -7,11 +7,12 @@ require_relative 'shop'
 
 class Game
   # attr_reader :HERO_CHOICES
-  attr_accessor :hero_choices, :HeroesParty, :MonstersParty
+  attr_reader :shop, :hero_choices, :HeroesParty, :MonstersParty
 
   def initialize
     @HeroesParty = HeroParty.new
     @MonstersParty = MonsterParty.new
+    create_shop
     @hero_choices = nil
     @monster_choices = nil
     create_monsters
@@ -170,20 +171,19 @@ class Game
     end
   end
 
-
   def fight
-
     # while @HeroesParty.alive.length > 0 && @MonstersParty.alive.length > 0
-
     @HeroesParty.attack(@MonstersParty.alive)
-
     @MonstersParty.attack(@HeroesParty.alive)
-
   # end
-end
+  end
+
+  def create_shop
+    @shop = Shop.new
+  end
 
   def enter_shop
-
+    @shop.enter(@HeroesParty)
   end
 
   def town_message
@@ -206,12 +206,14 @@ end
   end
 
   def play
-    town_message
-    case get_location
-    when :forest
-      enter_forest
-    when :shop
-      enter_shop
+    while.@HeroesParty.any?
+      town_message
+      case get_location
+      when :forest
+        enter_forest
+      when :shop
+        enter_shop
+      end
     end
   end
 
@@ -226,5 +228,6 @@ end
 #
 # puts "#{attackee} is now dead..."
 game = Game.new
+
 
 Pry.start(binding)

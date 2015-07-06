@@ -31,6 +31,8 @@ class Party
 end
 
 class HeroParty < Party
+  attr_reader :gold
+  
   def attack(opposing_party)
     # sending message to user, asking which monster to attack
     @alive.length.times do

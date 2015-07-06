@@ -1,5 +1,5 @@
 class Weapon
-  attr_reader :damage
+  attr_reader :damage, :name, :price
 
   def initialize(opts = {})
     @damage = opts[:damage]
