@@ -172,7 +172,7 @@ class Game
   end
 
   def fight
-    # while @HeroesParty.alive.length > 0 && @MonstersParty.alive.length > 0
+    # until @HeroesParty.alive.length < 0 && @MonstersParty.alive.length < 0
     @HeroesParty.attack(@MonstersParty.alive)
     @MonstersParty.attack(@HeroesParty.alive)
   # end
@@ -206,7 +206,7 @@ class Game
   end
 
   def play
-    while.@HeroesParty.any?
+    while @HeroesParty.any?
       town_message
       case get_location
       when :forest

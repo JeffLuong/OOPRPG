@@ -1,7 +1,7 @@
 require_relative 'entity'
 class Hero < Entity
   def initialize(opts = {})
-    @xp = @gold = 0
+    @xp = 0
 
     opts[:default_weapon] = Weapon.new({
       name: "fists",

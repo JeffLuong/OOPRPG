@@ -1,7 +1,8 @@
 require_relative 'weapon'
 
 class Entity
-  attr_reader :name, :weapon, :current_hp, :max_hp
+  attr_reader :name, :weapon, :max_hp
+  attr_accessor :current_hp
 
   def initialize(opts = {})
     @name = opts[:name]

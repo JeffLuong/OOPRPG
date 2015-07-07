@@ -2,6 +2,7 @@ require_relative 'weapon'
 
 class Shop
   def initialize
+    @wares = create_wares
   end
 
   def display_wares
